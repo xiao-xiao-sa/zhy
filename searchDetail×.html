@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+	<meta charset="UTF-8">
+    <!-- 设置360浏览器渲染模式,webkit 为极速内核，ie-comp 为 IE 兼容内核，ie-stand 为 IE 标准内核。 -->
+    <meta name="renderer" content="webkit">
+    <meta name="google" value="notranslate"><!-- 禁止Chrome 浏览器中自动提示翻译 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta http-equiv="Cache-Control" content="no-siteapp" /><!-- 禁止百度转码 -->
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"><!-- 定义文档类型 -->
+    <meta name="keywords" content="知汇眼">
+    <meta name="description" content="知汇眼">
+    <meta name=”viewport” content=”width=device-width, initial-scale=1, maximum-scale=1″>
+	<title>搜索详情</title>
+	<link rel="icon" type="image/x-icon" href="img/bitbug_favicon.ico" /> 
+	<!-- <link rel="stylesheet" href="css/bootstrap.min.css"> -->
+	<link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="css/common.css">
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+	<header class="header"></header>
+	<div id="searchDetail" class="main-sd">
+		<p class="cur-position">您当前所在的位置：<a href="index.html">知汇眼首页</a>&gt;<a href="shbMarket.html">商标超市</a>&gt;商标分类</p>
+		<div class="search-family">
+			<div class="sf-1">
+				<h3 class="sf-title">商标筛选</h3>
+				<div>
+					<span v-show="goodsFamily" class="sort">{{goodsFamily | changeLength}}<span class="sf-close" @click="delet(goodsFamily)">×</span></span>
+					<span v-show="goodsName" class="sort">{{goodsName | changeLength}}<span class="sf-close" @click="delet(goodsName)">×</span></span>
+					<span v-show="goodsType1" class="sort">{{goodsType1}}<span class="sf-close" @click="delet(goodsType1)">×</span></span>
+					<span v-show="goodsType2" class="sort">{{goodsType2}}<span class="sf-close" @click="delet(goodsType2)">×</span></span>
+					<span v-show="registDate" class="sort">{{registDate}}<span class="sf-close" @click="delet(registDate)">×</span></span>
+					<span v-show="price" class="sort">{{price}}<span class="sf-close" @click="delet(price)">×</span></span>
+					<span class="close-all" v-show="goodsName || goodsType1 || goodsType2 || registDate || price" @click="deletAll">全部删除X</span>
+					<input type="text" @change="changeName" placeholder="输入商标名称">
+				</div>
+			</div>
+			<div class="sf-2">
+				<h3 class="sf-title-1"><span>分类</span></h3>
+				<div>
+					<div class="top" :class="{'active':isShowAll}">
+						<span :class="{'active':goodsFamilyIndex==100}"><a href="" @click.prevent="changegoodsFamily(100)">不限</a></span>
+						<ul>
+							<li v-for="(item,index) in shbClassify" :class="{'active':index==goodsFamilyIndex}"><a href="" @click.prevent="changegoodsFamily(index)">{{item}}</a></li>
+						</ul>
+						<a href="" @click.prevent="isShow">展开更多</a>
+					</div>
+					<div v-show="goodsFamilyIndex != 100" class="bottom">
+						<p>使用项目：<span v-for="item in shbXiangmu[goodsFamilyIndex]">{{item}}</span></p>
+						<p>类似群组：<span v-for="item in shbLxqz[goodsFamilyIndex]">{{item}}</span></p>
+					</div>
+				</div>
+				
+			</div>
+			<div class="sf-3">
+				<h3 class="sf-title">类型</h3>
+				<div>
+					<span v-for="(item,index) in goodsType1List" :class="{'active':index==goodsType1Index}"><a href="" @click.prevent="changegoodsType1(index)">{{item}}</a></span>
+				</div>
+			</div>
+			<div class="sf-4">
+				<h3 class="sf-title">注册年限</h3>
+				<div>
+					<span v-for="(item,index) in registDateList" :class="{'active':index==registDateIndex}"><a href="" @click.prevent="changeregistDate(index)">{{item}}</a></span>
+				</div>
+			</div>
+			<div class="sf-5">
+				<h3 class="sf-title">数字</h3>
+				<div>
+					<span v-for="(item,index) in goodsType2List" :class="{'active':index==goodsType2Index}"><a href="" @click.prevent="changegoodsType2(index)">{{item}}</a></span>
+				</div>
+			</div>
+			<div class="sf-6">
+				<h3 class="sf-title">价格区间</h3>
+				<div>
+					<span v-for="(item,index) in priceList" :class="{'active':index==priceIndex}"><a href="" @click.prevent="changeprice(index)">{{item}}</a></span>
+				</div>
+			</div>
+		</div>
+		<div class="paixu">
+			<span>默认排序</span>
+			<a href="" class="renqi">人气</a>
+			<a href="" class="xinpin">新品</a>
+		</div>
+		<div class="shb-list">
+			<div v-for="item in shopList" class="shb-item" @click="toDetail(item.id)">
+				<div class="shb-box" v-on:mouseover="addActive($event)" v-on:mouseout="removeActive($event)">
+					<img :src="item.src" alt="">
+					<p class="shb-title">{{item.goodsFamily}}&nbsp;<abbr :title="item.title">{{item.title}}</abbr></p>
+					<p class="shb-fw">{{item.syfw}}</p>
+					<a href="" @click.stop="tokf">免费咨询</a>
+				</div>
+			</div>
+		</div>
+		<div class="page-box">
+			<span v-show="curPage>1"  @click="getShopList(30,curPage-1)">上一页</span>
+			<span v-for="item in pages" :class="{'active':item==curPage}" @click="getShopList(30,item)">{{item}}</span>
+			<span v-show="curPage<allPage" @click="getShopList(30,curPage+1)">下一页</span>
+			<i>共{{allPage}}页</i>
+			<i>跳转到</i>
+			<input type="text" :placeholder="curPage" v-model="toPage">
+			<a href="" @click.prevent="getShopList(5,toPage)">确定</a>
+		</div>
+	</div>
+	<footer class="footer"></footer>
+	<!-- <script type="text/javascript" src="js/jquery.min.js"></script> -->
+	<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+	<!-- <script type="text/javascript" src="js/bootstrap.min.js"></script> -->
+	<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/common.js"></script>
+	<!-- <script type="text/javascript" src="js/vue.min.js"></script> -->
+	<script src="https://cdn.bootcss.com/vue/2.5.16/vue.min.js"></script>
+	<!-- <script type="text/javascript" src="js/vue-resource.min.js"></script> -->
+	<script src="https://cdn.bootcss.com/vue-resource/1.5.0/vue-resource.min.js"></script>
+	<script src="js/searchDetail.js"></script>
+</body>
+</html>

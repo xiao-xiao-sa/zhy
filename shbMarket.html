@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+	<meta charset="UTF-8">
+    <!-- 设置360浏览器渲染模式,webkit 为极速内核，ie-comp 为 IE 兼容内核，ie-stand 为 IE 标准内核。 -->
+    <meta name="renderer" content="webkit">
+    <meta name="google" value="notranslate"><!-- 禁止Chrome 浏览器中自动提示翻译 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta http-equiv="Cache-Control" content="no-siteapp" /><!-- 禁止百度转码 -->
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"><!-- 定义文档类型 -->
+    <meta name="keywords" content="知汇眼">
+    <meta name="description" content="知汇眼">
+    <meta name=”viewport” content=”width=device-width, initial-scale=1, maximum-scale=1″>
+	<title>商标超市</title>
+	<link rel="icon" type="image/x-icon" href="img/bitbug_favicon.ico" /> 
+	<!-- <link rel="stylesheet" href="css/bootstrap.min.css"> -->
+	<link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="css/common.css">
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+	<header class="header"></header>
+	<div id="shbMarket">
+		<!-- 商标分类 -->
+		<div class="shb-classify">
+			<h3>商标分类</h3>
+			<ul class="classify-list">
+				<li  v-for="(item,index) in shbClassify"><a href="" @click.prevent="toSearchDetail1(index)">{{item}}</a></li>
+			</ul>
+			<h2>商品转让搜索</h2>
+				<div class="goods-search">
+					<p>
+						<label for="#goods-number">商品编号</label>
+						<input id="goods-number" class="goods-number" v-model="goodsNumber" type="text" placeholder="如：R3200001">
+						<label for="#goods-name">商品名称</label>
+						<input id="goods-name" class="goods-name" v-model="goodsName" type="text" placeholder="如：浙商">
+						<label for="#regist-number">注册号</label>
+						<input id="#regist-number" class="regist-number" v-model="registNumber" type="text" placeholder="如：3847008">
+					</p>
+					<p id="zhuced" style="position: relative;">
+						<label for="#goods-family">商品类别</label>
+						<select id="goods-family" class="goods-family" v-model="goodsFamily">
+							<option value="-请选择-">-请选择-</option>
+							<option  v-for="item in shbClassify" :value ="item">{{item}}</option>
+						</select>
+						<label for="#goods-group">类似群组</label>
+						<input id="goods-group" class="goods-group" v-model="goodsGroup" type="text" placeholder="如：2015">
+						<label for="#regist-date">注册日期</label>
+						<input id="regist-date" class="regist-date" v-model="registDate" type="date" placeholder="2015-09-24"/>
+					</p>
+					<a href="#"  @click.prevent="toSearchDetail2" class="submit tmdp-wait" target="_blank" >搜索</a>
+					<p>
+						<label>商品类型</label>
+						<input type="checkbox" name="goods-type1" v-model="goodsType1" value="中文">中文
+						<input type="checkbox" name="goods-type1" v-model="goodsType1" value="英文">英文
+						<input type="checkbox" name="goods-type1" v-model="goodsType1" value="图形">图形
+						<input type="checkbox" name="goods-type1" v-model="goodsType1" value="拼音">拼音
+						<input type="checkbox" name="goods-type1" v-model="goodsType1" value="数字">数字
+						<input type="checkbox" name="goods-type1" v-model="goodsType1" value="其他">其他
+						<input type="radio" name="goods-type2" v-model="goodsType2" value="1-2字">1-2字
+						<input type="radio" name="goods-type2" v-model="goodsType2" value="2字">2字
+						<input type="radio" name="goods-type2" v-model="goodsType2" value="3字">3字
+						<input type="radio" name="goods-type2" v-model="goodsType2" value="4字">4字
+						<input type="radio" name="goods-type2" v-model="goodsType2" value="4字以上">4字以上
+						<input type="radio" name="goods-type2" v-model="goodsType2" value="不限">不限
+						<input type="radio" name="goods-type2" v-model="goodsType2" value="纯图">纯图
+					</p>
+
+				</div>
+		</div>
+		<!-- 特价商标和精品商标 -->
+		<div class="shb-detail">
+			<div class="shb-type" v-for="item in shbDetail">
+				<div class="shb-left">
+					<!-- <p>{{item.type}}</p> -->
+					<img :src="item.src" alt="">
+				</div>
+				<ul class="shb-right">
+					<li v-for="(list,index) in item.list"  @click="toDetail(list.id)" @mouseenter="enter" @mouseleave="leave">
+						<img :src="list.src" alt="">
+						<p>
+							<span>{{list.goodsFamily}}</span>&nbsp;&nbsp;
+							<span>{{list.title}}</span>
+						</p>
+					</li>
+				</ul>
+				<a href=""  class="tomore tmdp-wait">查看更多&gt;</a>
+			</div>
+		</div>
+	</div>
+	<footer class="footer"></footer>
+	<!-- <script type="text/javascript" src="js/jquery.min.js"></script> -->
+	<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+	<!-- <script type="text/javascript" src="js/bootstrap.min.js"></script> -->
+	<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/common.js"></script>
+	<!-- <script type="text/javascript" src="js/vue.min.js"></script> -->
+	<script src="https://cdn.bootcss.com/vue/2.5.16/vue.min.js"></script>
+	<!-- <script type="text/javascript" src="js/vue-resource.min.js"></script> -->
+	<script src="https://cdn.bootcss.com/vue-resource/1.5.0/vue-resource.min.js"></script>
+	<script src="js/shbMarket.js"></script>
+</body>
+</html>

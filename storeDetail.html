@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+	<meta charset="UTF-8">
+    <!-- 设置360浏览器渲染模式,webkit 为极速内核，ie-comp 为 IE 兼容内核，ie-stand 为 IE 标准内核。 -->
+    <meta name="renderer" content="webkit">
+    <meta name="google" value="notranslate"><!-- 禁止Chrome 浏览器中自动提示翻译 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta http-equiv="Cache-Control" content="no-siteapp" /><!-- 禁止百度转码 -->
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"><!-- 定义文档类型 -->
+    <meta name="keywords" content="知汇眼">
+    <meta name="description" content="知汇眼">
+    <meta name=”viewport” content=”width=device-width, initial-scale=1, maximum-scale=1″>
+	<title>天猫店铺详情</title>
+	<link rel="icon" type="image/x-icon" href="img/bitbug_favicon.ico" /> 
+	<!-- <link rel="stylesheet" href="css/bootstrap.min.css"> -->
+	<link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="css/common.css">
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+	<header class="header"></header>
+	<div id="storeDetail" class="store-detail">
+		<div class="banner">
+			<img src="img/tmdp/banner.png" alt="">
+		</div>
+		<p class="cur-position">您当前所在的位置：<a href="index.html">知汇眼首页</a>&gt;天猫店铺</p>
+		<div class="detail-container">
+			<h1>{{detail.title}}</h1>
+			<p class="price">当前价<i>&yen;</i><b>{{detail.price | douhao}}</b>（{{detail.cjcs}}次出价）</p>
+			<p><a href="http://p.qiao.baidu.com/im/index?siteid=3242464&ucid=5688585&lastsubid=1752198" class="zixun">我要咨询</a></p>
+			<h2 >交易流程</h2>
+			<div class="jylc">
+				<img src="img/jylc.png" alt="">
+				<p>支付定金（预留店铺）-----支付店铺款（约80%）（变更店铺密码信息等，并提交公司过户）-----变更完成（乙方出具新营业执照，甲方支付尾款）------甲方提供所有资质</p>
+			</div>
+			<h2>商标情况</h2>
+			<div class="shbqk">
+				<ul>
+					<li>商标名称：<i v-show="!show">****</i><i v-show="show">{{detail.shbName}}</i><a href="" @click.prevent="showName">免费查看</a></li>
+					<li>商标持有者：****</li>
+					<li>是否过户：<b>{{detail.isGh}}</b></li>
+					<li>商标类型：<b>{{detail.shbType}}</b></li>
+					<li>商标小类：<b>{{detail.shbTypex}}</b></li>
+				</ul>
+			</div>
+			<h2>公司情况</h2>
+			<div class="gsqk">
+				<ul>
+					<li>公司名称：<span>{{detail.gsName}}</span></li>
+					<li>注册日期：<span>{{detail.zcDate}}</span></li>
+					<li>注册资金：<span>{{detail.zczj}}</span></li>
+					<li>纳税人资质：<span>{{detail.nszz}}</span></li>
+					<li>法院公告：<span>{{detail.fygg}}</span></li>
+					<li>法院判决：<span>{{detail.fypj}}</span></li>
+					<li>失信信息：<span>{{detail.sxxx}}</span></li>
+					<li>行政处罚：<span>{{detail.xzcf}}</span></li>
+					<li>经营状态：<span>{{detail.jyzt}}</span></li>
+					<li>税务状态：<span>{{detail.swzt}}</span></li>
+					<li>年报状态：<span>{{detail.nbzt}}</span></li>
+					<li>股东人数：<span>{{detail.gdrs}}人</span></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<footer class="footer"></footer>
+	<!-- <script type="text/javascript" src="js/jquery.min.js"></script> -->
+	<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+	<!-- <script type="text/javascript" src="js/bootstrap.min.js"></script> -->
+	<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/common.js"></script>
+	<!-- <script type="text/javascript" src="js/vue.min.js"></script> -->
+	<script src="https://cdn.bootcss.com/vue/2.5.16/vue.min.js"></script>
+	<!-- <script type="text/javascript" src="js/vue-resource.min.js"></script> -->
+	<script src="https://cdn.bootcss.com/vue-resource/1.5.0/vue-resource.min.js"></script>
+	<script src="js/storeDetail.js"></script>
+</body>
+</html>

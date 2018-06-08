@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+	<meta charset="UTF-8">
+    <!-- 设置360浏览器渲染模式,webkit 为极速内核，ie-comp 为 IE 兼容内核，ie-stand 为 IE 标准内核。 -->
+    <meta name="renderer" content="webkit">
+    <meta name="google" value="notranslate"><!-- 禁止Chrome 浏览器中自动提示翻译 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta http-equiv="Cache-Control" content="no-siteapp" /><!-- 禁止百度转码 -->
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"><!-- 定义文档类型 -->
+    <meta name="keywords" content="知汇眼">
+    <meta name="description" content="知汇眼">
+    <meta name=”viewport” content=”width=device-width, initial-scale=1, maximum-scale=1″>
+	<title>天猫店铺</title>
+	<link rel="icon" type="image/x-icon" href="img/bitbug_favicon.ico" /> 
+	<!-- <link rel="stylesheet" href="css/bootstrap.min.css"> -->
+	<link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="css/common.css">
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+	<header class="header"></header>
+	<div class="main-tmshop">
+		<div class="banner">
+			<img src="img/tmdp/banner.png" alt="">
+		</div>
+		<div class="tmshop-1">
+			<div class="title">
+				<h1>知汇眼买店优势</h1>
+			</div>
+			<div class="content">
+				<div class="dpys-box">
+					<div class="dpys-item">
+						<p>01</p>
+						<img src="img/tmdp/dpys1.png" alt="">
+						<h2>全新店铺</h2>
+						<p>干净公司，不需担心债务风险</p>
+					</div>
+					<div class="dpys-item">
+						<p>02</p>
+						<img src="img/tmdp/dpys2.png" alt="">
+						<h2>资金保障</h2>
+						<p>专业流程，资金安全</p>
+					</div>
+					<div class="dpys-item">
+						<p>03</p>
+						<img src="img/tmdp/dpys3.png" alt="">
+						<h2>法律保护</h2>
+						<p>提供法律效益合同，必要时提供法律援助</p>
+					</div>
+					<div class="dpys-item">
+						<p>04</p>
+						<img src="img/tmdp/dpys4.png" alt="">
+						<h2>专业顾问</h2>
+						<p>一对一服务，过户全程陪同</p>
+					</div>
+				</div>
+				<a href="http://p.qiao.baidu.com/im/index?siteid=3242464&ucid=5688585&lastsubid=1752198">点击联系挑店小助理</a>
+			</div>
+		</div>
+		<div class="tmshop-2">
+			<div class="title">
+				<h1>知汇眼主打新天猫店铺交易</h1>
+				<p>买老店怕商标名字不如意，平台不退定金？</p>
+			</div>
+			<div class="content">
+				<div class="tmys-item">
+					<img src="img/tmdp/tmys1.png" alt="">
+					<h2>店铺名字任意挑选</h2>
+					<p>优秀品牌名等于节省千万广告费用</p>
+					<span>优势1</span>
+				</div>
+				<div class="tmys-item">
+					<img src="img/tmdp/tmys2.png" alt="">
+					<h2>全新店铺</h2>
+					<p>老店铺隐形降权风险难规避<br/>新店运营任由你心意</p>
+					<span>优势2</span>
+				</div>
+				<div class="tmys-item">
+					<img src="img/tmdp/tmys2.png" alt="">
+					<h2>全新公司</h2>
+					<p>0申报，0贷款，买的放心，运营的舒心</p>
+					<span>优势3</span>
+				</div>
+			</div>
+		</div>
+		<div id="tmshop" class="tmshop-3">
+			<div class="show-select">
+				<span>您的选择</span>
+				<div class="show-select-box">
+					<span v-show="shcTypeIndex!=0">{{curShcType}} <span class="sf-close" @click="delet(curShcType)">×</span></span>
+					<span v-show="shbTypeIndex!=0">{{curShbType}} <span class="sf-close" @click="delet(curShbType)">×</span></span>
+					<span v-show="hyTypeIndex!=0">{{curHyType}} <span class="sf-close" @click="delet(curHyType)">×</span></span>
+				</div>
+				
+			</div>
+			<div class="select-type">
+				<span>商城类型</span>
+				<ul>
+					<li v-for="(item,index) in shcType" :class="{'active':index==shcTypeIndex}"><a href="" @click.prevent="ChangeShcType(index)">{{item}}</a></li>
+				</ul>
+			</div>
+			<div class="select-type">
+				<span>商标类型</span>
+				<ul>
+					<li v-for="(item,index) in shbType" :class="{'active':index==shbTypeIndex}"><a href="" @click.prevent="ChangeShbType(index)">{{item}}</a></li>
+				</ul>
+			</div>
+			<div class="select-type">
+				<span>所属行业</span>
+				<ul>
+					<li v-for="(item,index) in hyType" :class="{'active':index==hyTypeIndex}"><a href="" @click.prevent="ChangeHyType(index)">{{item}}</a></li>
+				</ul>
+			</div>
+			<div class="tmshop-list">
+				<div  v-for="item in tmshopList" class="tmshop-item">
+					<h1 class="title">
+						<img :src="item.src" alt="">
+						{{item.title}}
+						<span>{{item.isDj}}</span>
+					</h1>
+					<ul class="describe">
+						<li>
+							<span>所属行业：</span>
+							{{item.hyType}}
+						</li>
+						<li>
+							<span>所在地区：</span>
+							{{item.area}}
+						</li>
+						<li>
+							<span>商城类型：</span>
+							{{item.shcType}}
+						</li>
+						<li>
+							<span>商标类型：</span>
+							{{item.shbType}}
+						</li>
+						<li>
+							<span>纳税资质：</span>
+							{{item.nszz}}
+						</li>
+						<li>
+							<span>消费金：</span>
+							{{item.xfj}}（退还）
+						</li>
+						<li>
+							<span>技术年费：</span>
+							{{item.jsnf}}（退还）
+						</li>
+						<li>
+							<span>动态评分：</span>
+							{{item.dtpf}}
+						</li>
+						<li>
+							<span>违规扣分：</span>
+							{{item.wgkf}}
+						</li>
+						<li>
+							<span>是否带待：</span>
+							{{item.isDk}}
+						</li>
+					</ul>
+					<p class="mjms">
+						<span>卖家描述：</span>
+						{{item.mjms}}
+					</p>
+					<p class="type">{{item.type}}</p>
+					<span class="isRz">{{item.isRz}}</span>
+					<span class="isFace">{{item.isFace}}</span>
+					<span class="price">{{item.price}}<i>万</i></span>
+					<a href="" class="toDetail" @click.prevent="toStoreDetail(item.id)">查看详情&gt;</a>
+				</div>
+			</div>
+			<div class="page-box">
+				<span v-show="curPage>1" @click="getTmShopList(6,curPage-1)">上一页</span>
+				<span v-for="item in pages" :class="{'active':item==curPage}" @click="getTmShopList(6,item)">{{item}}</span>
+				<span v-show="curPage<allPage" @click="getTmShopList(6,curPage+1)">下一页</span>
+				<i>共{{allPage}}页</i>
+				<i>跳转到</i>
+				<input type="text" :placeholder="curPage" v-model="toPage">
+				<a href="" @click.prevent="getTmShopList(6,toPage)">确定</a>
+			</div>
+		</div>
+
+	</div>
+	<footer class="footer"></footer>
+	<!-- <script type="text/javascript" src="js/jquery.min.js"></script> -->
+	<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+	<!-- <script type="text/javascript" src="js/bootstrap.min.js"></script> -->
+	<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/common.js"></script>
+	<!-- <script type="text/javascript" src="js/vue.min.js"></script> -->
+	<script src="https://cdn.bootcss.com/vue/2.5.16/vue.min.js"></script>
+	<!-- <script type="text/javascript" src="js/vue-resource.min.js"></script> -->
+	<script src="https://cdn.bootcss.com/vue-resource/1.5.0/vue-resource.min.js"></script>
+	<script src="js/tmShopstore.js"></script>
+						
+</body>
+</html>

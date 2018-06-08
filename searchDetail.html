@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+	<meta charset="UTF-8">
+    <!-- 设置360浏览器渲染模式,webkit 为极速内核，ie-comp 为 IE 兼容内核，ie-stand 为 IE 标准内核。 -->
+    <meta name="renderer" content="webkit">
+    <meta name="google" value="notranslate"><!-- 禁止Chrome 浏览器中自动提示翻译 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta http-equiv="Cache-Control" content="no-siteapp" /><!-- 禁止百度转码 -->
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"><!-- 定义文档类型 -->
+    <meta name="keywords" content="知汇眼">
+    <meta name="description" content="知汇眼">
+    <meta name=”viewport” content=”width=device-width, initial-scale=1, maximum-scale=1″>
+	<title>搜索详情</title>
+	<link rel="icon" type="image/x-icon" href="img/bitbug_favicon.ico" /> 
+	<link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="css/common.css">
+	<link rel="stylesheet" href="css/style.css">
+	<style>
+		.sf-2 .bottom span.active a{
+			background-color: red;
+		}
+		.goodsName-input{
+			display: inline-block;
+			width: 200px;
+			height: 25px;
+			box-sizing: border-box;
+			border: 1px solid #ccc;
+			position: relative;
+			top:8px;
+		}
+		.main-sd .goodsName-input input{
+			position: absolute;
+			top:0;
+			left: 0;
+			width:120px;
+			border: none;
+			outline: none;
+			box-shadow: none;
+		}
+		.main-sd .goodsName-input  span{
+			position: absolute;
+			top: 0;
+			right: 5px;
+			height: 100%;
+			line-height: 25px;
+			cursor: pointer;
+		}
+	</style>
+</head>
+<body>
+	<header class="header"></header>
+	<div id="searchDetail" class="main-sd">
+		<p class="cur-position">您当前所在的位置：<a href="index.html">知汇眼首页</a>&gt;<a href="shbMarket.html">商标超市</a>&gt;商标分类</p>
+		<div class="search-family">
+			<div class="sf-1">
+				<h3 class="sf-title">商标筛选</h3>
+				<div>
+					<span class="label">
+						<span class="sort">标签一dadd<span class="sf-close" data-type="goodsFamily">×</span></span>
+						<span class="sort">标签er<span class="sf-close" >×</span></span>
+					</span>
+					<span class="close-all" >全部删除X</span>
+					<p class="goodsName-input"><input type="text"  placeholder="输入商标名称"> <span class="goodsName-btn"><img src="img/icon/icon-fdj.png" alt="" title="提交"></span></p>
+				</div>
+			</div>
+			<div class="sf-2">
+				<h3 class="sf-title-1"><span>分类</span></h3>
+				<div>
+					<div class="top">
+						<span class="active"><a href="" class="goodsFamily" data-id='0'>不限</a></span>
+						<ul class="goodsFamilyList">
+							<li ><a href="">01类-化学原料</a></li>
+						</ul>
+						<a href="" class="showMore">展开更多</a>
+					</div>
+					<div class="bottom">
+						<div>使用项目：
+							<p class="all-syxm" style="display: inline-block;">
+								<span class="active"><a href="" class="syxm">肥料</a></span>
+								<span><a href="" class="syxm">胶水</a></span>
+							</p>
+						</div>
+						<div>类似群组：
+							<p class="all-lsqz" style="display: inline-block;">
+								<span><a href="" class="lsqz">0101</a></span>
+								<span><a href="" class="lsqz">0102</a></span>
+							</p>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+			<div class="sf-3">
+				<h3 class="sf-title">类型</h3>
+				<div>
+					<span  class="active"><a href="" class="goodsType1">不限</a></span>
+					<span><a href="" class="goodsType1">中文</a></span>
+					<span><a href="" class="goodsType1">英文</a></span>
+					<span><a href="" class="goodsType1">图形</a></span>
+					<span><a href="" class="goodsType1">拼音</a></span>
+					<span><a href="" class="goodsType1">数字</a></span>
+					<span><a href="" class="goodsType1">其他</a></span>
+				</div>
+			</div>
+			<div class="sf-4">
+				<h3 class="sf-title">注册年限</h3>
+				<div>
+					<span  class="active"><a href="" class="registDate">不限</a></span>
+					<span><a href="" class="registDate">满1年</a></span>
+					<span><a href="" class="registDate">满2年</a></span>
+					<span><a href="" class="registDate">满3年</a></span>
+					<span><a href="" class="registDate">满4年</a></span>
+					<span><a href="" class="registDate">满5年</a></span>
+					<span><a href="" class="registDate">满5年以上</a></span>
+				</div>
+			</div>
+			<div class="sf-5">
+				<h3 class="sf-title">数字</h3>
+				<div>
+					<span class="active"><a href="" class="goodsType2">不限</a></span>
+					<span><a href="" class="goodsType2">1-2字</a></span>
+					<span><a href="" class="goodsType2">3字</a></span>
+					<span><a href="" class="goodsType2">4字</a></span>
+					<span><a href="" class="goodsType2">4字以上</a></span>
+					<span><a href="" class="goodsType2">纯图</a></span>
+					<span><a href="" class="goodsType2">其他</a></span>
+				</div>
+			</div>
+			<div class="sf-6">
+				<h3 class="sf-title">价格区间</h3>
+				<div>
+					<span class="active"><a href="" class="price">不限</a></span>
+					<span><a href="" class="price">0-3万</a></span>
+					<span><a href="" class="price">3-5万</a></span>
+					<span><a href="" class="price">5-10万</a></span>
+					<span><a href="" class="price">10万以上</a></span>
+				</div>
+			</div>
+		</div>
+		<div class="paixu">
+			<span>默认排序</span>
+			<a href="" class="renqi">人气</a>
+			<a href="" class="xinpin">新品</a>
+		</div>
+		<div class="shb-list">
+			<div  class="shb-item" data-id="1">
+				<div class="shb-box" >
+					<img src="img/search/img.png" alt="">
+					<p class="shb-title">第25类&nbsp;<abbr title="柏慕爱">柏慕爱</abbr></p>
+					<p class="shb-fw">服装，鞋（脚上的穿着物），帽子</p>
+					<a href="" class="tokf">免费咨询</a>
+				</div>
+			</div>
+		</div>
+		<div class="page-box">
+			<span >上一页</span>
+			<span  class="active" >1</span>
+			<span>2</span>
+			<span>3</span>
+			<span>4</span>
+			<span >下一页</span>
+			<i>共10页</i>
+			<i>跳转到</i>
+			<input type="text" >
+			<a href="" >确定</a>
+		</div>
+	</div>
+	<footer class="footer"></footer>
+	<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/common.js"></script>
+	<script src="js/searchDetail.js"></script>
+</body>
+</html>
