@@ -870,6 +870,20 @@
 			font-weight: 500;
 			color: #000;
 		}
+		.main-detail .shbDetail .right .lsqz-p{
+			display: flex;
+			flex-wrap: nowrap;
+			justify-content: flex-start;
+		}
+		.main-detail .shbDetail .right .lsqz-p b{
+			width:100px;
+			height: 22px;
+			vertical-align :top;
+		}
+		.main-detail .shbDetail .right .lsqz-p span{
+			width: 420px;
+			word-wrap : break-word;
+		}
 		.main-detail .shbDetail .right h2{
 			padding-left: 36px;
 			background:url(../img/icon/icon-tel.png) left center no-repeat;
@@ -1997,9 +2011,13 @@
 			display: inline-block;
 			width:80px;
 			height: 22px;line-height: 22px;
-			text-align: center;
+			text-align: left;
 			margin-right: 5px; 
 			position: relative;
+			padding-left: 10px;
+    		box-sizing: border-box;
+    		color: #a1a1a1;
+    		font-family: serif;
 		}
 		.main-sd .sf-1 .sort .sf-close{
 			position: absolute;
